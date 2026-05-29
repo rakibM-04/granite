@@ -4,11 +4,13 @@ import App from "../src/App";
 
 import { setAuthHeaders } from "apis/axios";
 import { initializeLogger } from "common/logger";
+import { registerIntercepts } from "apis/axios";
 
+registerIntercepts();
 initializeLogger();
 setAuthHeaders();
 
 const componentsContext = { App };
-ReactRailsUJS.getConstructor = (name) => {
+ReactRailsUJS.getConstructor = name => {
   return componentsContext[name];
 };
